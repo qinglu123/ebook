@@ -1,0 +1,11 @@
+server:
+  port: 7777
+spring:
+  application:
+    name: ebook-eureka
+eureka:
+  client:
+    fetch-registry: false             #是否本注册中心数据与其他注册中心共享
+    register-with-eureka: false        #是否让其他注册中心数据注入到本注册中心
+    service-url:
+      defaultZone: http://127.0.0.1:7777/eureka/

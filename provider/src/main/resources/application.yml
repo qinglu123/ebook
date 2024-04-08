@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/mm_db?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
+  application:
+    name: cloud-provider
+
+mybatis:
+  type-aliases-package: com.ebook.entity
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true  #\u4E0B\u5212\u7EBF\u8F6C\u9A7C\u5CF0
+
+server:
+  port: 8081
+
+logging:
+  level:
+    com:
+      lq:
+        mapper: debug
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:7777/eureka/

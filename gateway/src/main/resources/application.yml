@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: ebook-gateway
+  cloud:
+    gateway:
+      routes: #定义每个模块的路由规范
+        - id: ebook-route #路由规范编号
+          uri: lb://cloud-provider
+          predicates: #路由规范的详细内容
+            - Path=/api/ebook/**
+          filters: #路由过滤器
+            - StripPrefix=2 #指示在向下游发送请求之前，要从请求中剥离的路径中的零件数。
+        - id: img-route #路由规范编号
+          uri: file:///D:/users/
+          predicates: #路由规范的详细内容
+            - Path=/images/**
+          filters: #路由过滤器
+            - StripPrefix=1 #指示在向下游发送请求之前，要从请求中剥离的路径中的零件数。
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:7777/eureka/
+server:
+  port: 7600
